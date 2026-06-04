@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prosthetic Legs | Med-Awa International</title>
+  <meta name="description" content="Learn how prosthetic legs from Med-Awa International help people regain their mobility, rebuild their confidence, and explore their world again." />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:      #3aaa35;
+      --green-dark: #2a8025;
+      --green-light:#e8f7e8;
+      --sky:        #29b8e0;
+      --sky-dark:   #1a90b0;
+      --sky-light:  #e0f6fc;
+      --black:      #1c1c1c;
+      --gray-text:  #555;
+      --gray-mid:   #ddd;
+      --gray-light: #f4f4f4;
+      --white:      #ffffff;
+      --font-sans:  'Source Sans 3', sans-serif;
+      --font-serif: 'Source Serif 4', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--black); background: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white); border-bottom: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 72px;
+      box-shadow: 0 2px 12px rgba(58,170,53,0.10);
+    }
+    .logo-wrap img { height: 56px; width: auto; }
+    nav.main-nav { display: flex; align-items: center; gap: 28px; }
+    nav.main-nav a { font-size: 14px; font-weight: 600; color: var(--black); padding: 8px 0; border-bottom: 2.5px solid transparent; transition: border-color .2s, color .2s; }
+    nav.main-nav a:hover, nav.main-nav a.active { border-color: var(--green); color: var(--green); }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-contact { background: var(--green); color: white; padding: 9px 20px; font-size: 14px; font-weight: 700; border-radius: 3px; transition: background .2s; }
+    .btn-contact:hover { background: var(--green-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { margin-top: 72px; background: var(--gray-light); padding: 14px 80px; border-bottom: 1px solid var(--gray-mid); }
+    .breadcrumb ol { list-style: none; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .breadcrumb li { font-size: 13px; color: var(--gray-text); }
+    .breadcrumb li a { color: var(--green); font-weight: 600; }
+    .breadcrumb li a:hover { text-decoration: underline; }
+    .breadcrumb li::after { content: '›'; margin-left: 8px; color: var(--gray-mid); }
+    .breadcrumb li:last-child::after { display: none; }
+    .breadcrumb li:last-child { color: var(--black); font-weight: 600; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 70vh; min-height: 460px; overflow: hidden;
+      display: flex; align-items: flex-end;
+    }
+    .hero-img { position: absolute; inset: 0; }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(10,30,10,0.82) 0%, rgba(10,30,10,0.45) 55%, rgba(10,30,10,0.15) 100%);
+    }
+    /* Green top accent */
+    .hero::before { content:''; position:absolute; top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--green),var(--sky));z-index:3; }
+    .hero-content { position: relative; z-index: 2; padding: 0 80px 72px; max-width: 640px; }
+    .hero-label { display:inline-block; background:var(--green); color:white; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; border-radius:2px; margin-bottom:18px; }
+    .hero-content h1 { font-family: var(--font-serif); font-size: clamp(36px,5vw,64px); font-weight:300; color:white; line-height:1.1; margin-bottom:16px; }
+    .hero-content h1 strong { font-weight:700; color:#7ee87a; }
+    .hero-content p { font-size:17px; color:rgba(255,255,255,.82); line-height:1.75; max-width:520px; margin-bottom:28px; }
+    .hero-scroll { display:inline-flex; align-items:center; gap:10px; background:var(--green); color:white; padding:13px 26px; font-size:14px; font-weight:700; border-radius:3px; transition:background .2s; }
+    .hero-scroll:hover { background:var(--green-dark); }
+
+    /* ── SECTION COMMONS ── */
+    .section { padding: 80px; }
+    .section-subtitle { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--green); margin-bottom:12px; }
+    .section-title { font-family:var(--font-serif); font-size:38px; font-weight:300; line-height:1.2; margin-bottom:20px; }
+    .section-lead { font-size:17px; color:var(--gray-text); line-height:1.8; max-width:760px; }
+
+    /* ── INTRO ── */
+    .intro-section { background:var(--white); padding:80px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .intro-text p { font-size:16px; color:var(--gray-text); line-height:1.85; margin-bottom:16px; }
+    .intro-visual { position:relative; border-radius:4px; overflow:hidden; }
+    .intro-visual img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:4px; }
+    .intro-visual-badge {
+      position:absolute; bottom:20px; left:20px;
+      background:var(--green); color:white;
+      padding:10px 18px; border-radius:3px;
+      font-size:13px; font-weight:700;
+    }
+
+    /* ── COMPONENTS ── */
+    .components-section { background:var(--gray-light); padding:80px; }
+    .components-intro { max-width:720px; margin-bottom:56px; }
+    .components-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+    .comp-card { background:var(--white); overflow:hidden; border-radius:0; transition:box-shadow .25s; }
+    .comp-card:hover { box-shadow:0 8px 32px rgba(58,170,53,0.13); }
+    .comp-img { aspect-ratio:16/9; overflow:hidden; }
+    .comp-img img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+    .comp-card:hover .comp-img img { transform:scale(1.05); }
+    .comp-body { padding:28px; }
+    .comp-tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--sky); margin-bottom:10px; }
+    .comp-body h3 { font-family:var(--font-serif); font-size:22px; font-weight:400; margin-bottom:12px; }
+    .comp-body p { font-size:14px; color:var(--gray-text); line-height:1.75; }
+
+    /* ── TYPES INTRO ── */
+    .types-intro { background:var(--black); color:white; padding:80px; }
+    .types-intro .section-subtitle { color:var(--green); }
+    .types-intro .section-title { color:white; }
+    .types-intro .section-lead { color:rgba(255,255,255,.7); }
+    .types-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:48px; }
+    .type-card {
+      position:relative; overflow:hidden; cursor:pointer;
+      padding:48px 40px; display:flex; flex-direction:column;
+    }
+    .type-card-1 { background:linear-gradient(135deg,#0d2b0d,#1a4a1a); }
+    .type-card-2 { background:linear-gradient(135deg,#071c2a,#0e3a55); }
+    .type-card::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; }
+    .type-card-1::before { background:var(--green); }
+    .type-card-2::before { background:var(--sky); }
+    .type-card h3 { font-family:var(--font-serif); font-size:28px; font-weight:300; color:white; margin-bottom:14px; }
+    .type-card p { font-size:15px; color:rgba(255,255,255,.7); line-height:1.8; }
+    .type-icon { font-size:48px; margin-bottom:24px; opacity:.7; }
+
+    /* ── PRODUCT LIST ── */
+    .products-section { background:var(--white); padding:80px; }
+    .products-header { margin-bottom:48px; }
+    .product-category { margin-bottom:64px; }
+    .product-category-title {
+      font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:2px;
+      padding:10px 20px; display:inline-block; border-radius:2px; margin-bottom:28px;
+    }
+    .cat-green { background:var(--green-light); color:var(--green-dark); border-left:4px solid var(--green); }
+    .cat-sky { background:var(--sky-light); color:var(--sky-dark); border-left:4px solid var(--sky); }
+
+    /* Horizontal product card */
+    .product-item {
+      display:grid; grid-template-columns:340px 1fr; gap:0;
+      border:1px solid var(--gray-mid); margin-bottom:3px;
+      transition:box-shadow .25s, border-color .25s; background:var(--white);
+    }
+    .product-item:hover { box-shadow:0 6px 28px rgba(58,170,53,0.12); border-color:var(--green); }
+    .product-item-img { overflow:hidden; position:relative; }
+    .product-item-img img { width:100%; height:100%; object-fit:cover; transition:transform .45s; }
+    .product-item:hover .product-item-img img { transform:scale(1.04); }
+    .product-item-badge {
+      position:absolute; top:16px; left:16px;
+      font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px;
+      padding:5px 12px; border-radius:2px; color:white;
+    }
+    .badge-green { background:var(--green); }
+    .badge-sky { background:var(--sky); }
+    .product-item-body { padding:36px 40px; display:flex; flex-direction:column; justify-content:center; }
+    .product-item-tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+    .tag-green { color:var(--green); }
+    .tag-sky { color:var(--sky); }
+    .product-item-body h3 { font-family:var(--font-serif); font-size:28px; font-weight:300; margin-bottom:14px; }
+    .product-item-body p { font-size:15px; color:var(--gray-text); line-height:1.8; margin-bottom:24px; }
+    .product-specs { display:flex; gap:24px; flex-wrap:wrap; margin-bottom:24px; }
+    .spec-pill { background:var(--gray-light); border-radius:20px; padding:6px 14px; font-size:12px; font-weight:600; color:var(--black); display:flex; align-items:center; gap:6px; }
+    .spec-pill span { color:var(--green); font-size:14px; }
+    .product-link {
+      display:inline-flex; align-items:center; gap:8px; align-self:flex-start;
+      font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px;
+      padding:11px 22px; border-radius:3px; border:2px solid; transition:background .2s, color .2s;
+    }
+    .link-green { border-color:var(--green); color:var(--green); }
+    .link-green:hover { background:var(--green); color:white; }
+    .link-sky { border-color:var(--sky); color:var(--sky); }
+    .link-sky:hover { background:var(--sky); color:white; }
+
+    /* ── FITTING PROCESS ── */
+    .fitting-section { background:var(--gray-light); padding:80px; }
+    .fitting-header { max-width:720px; margin-bottom:56px; }
+    .fitting-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-bottom:56px; }
+    .fitting-step { background:var(--white); padding:32px 24px; position:relative; border-top:3px solid var(--green); }
+    .fitting-step-num {
+      width:42px; height:42px; border-radius:50%;
+      background:var(--green); color:white;
+      font-size:18px; font-weight:700;
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:18px;
+    }
+    .fitting-step h4 { font-size:16px; font-weight:700; margin-bottom:10px; }
+    .fitting-step p { font-size:14px; color:var(--gray-text); line-height:1.7; }
+    .fitting-connector { display:none; }
+    .fitting-visual { display:grid; grid-template-columns:1fr 1fr; gap:3px; border-radius:4px; overflow:hidden; }
+    .fitting-visual img { width:100%; aspect-ratio:16/9; object-fit:cover; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background:var(--white); padding:80px; }
+    .testimonials-header { margin-bottom:48px; }
+    .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .testimonial-card { padding:36px; border:1px solid var(--gray-mid); position:relative; transition:box-shadow .25s; }
+    .testimonial-card:hover { box-shadow:0 6px 24px rgba(58,170,53,0.1); border-color:var(--green); }
+    .testimonial-card::before { content:'\201C'; position:absolute; top:20px; right:28px; font-size:80px; color:var(--green); opacity:.15; font-family:Georgia,serif; line-height:1; }
+    .testimonial-img { width:64px; height:64px; border-radius:50%; object-fit:cover; margin-bottom:20px; border:3px solid var(--green-light); }
+    .testimonial-card p { font-size:15px; color:var(--gray-text); line-height:1.8; margin-bottom:20px; font-style:italic; }
+    .testimonial-name { font-weight:700; font-size:14px; }
+    .testimonial-detail { font-size:13px; color:var(--green); font-weight:600; }
+
+    /* ── FIND CLINIC ── */
+    .clinic-section {
+      background:linear-gradient(135deg,var(--green-dark),var(--green));
+      color:white; padding:80px; display:grid;
+      grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+    }
+    .clinic-text h2 { font-family:var(--font-serif); font-size:38px; font-weight:300; margin-bottom:20px; }
+    .clinic-text p { font-size:16px; line-height:1.8; opacity:.9; margin-bottom:32px; }
+    .clinic-btn {
+      display:inline-flex; align-items:center; gap:10px;
+      background:white; color:var(--green-dark);
+      padding:14px 28px; font-size:15px; font-weight:700; border-radius:3px;
+      transition:background .2s, color .2s;
+    }
+    .clinic-btn:hover { background:var(--black); color:white; }
+    .clinic-visual { border-radius:4px; overflow:hidden; position:relative; }
+    .clinic-visual img { width:100%; aspect-ratio:16/9; object-fit:cover; }
+    .clinic-visual-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.15); }
+
+    /* ── CONSULTATION FORM ── */
+    .form-section { background:var(--gray-light); padding:80px; }
+    .form-wrap { max-width:840px; }
+    .form-section .section-title { margin-bottom:8px; }
+    .form-section .section-lead { margin-bottom:48px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .form-group { display:flex; flex-direction:column; gap:8px; }
+    .form-group.full { grid-column:1/-1; }
+    label { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--black); }
+    input, select, textarea {
+      width:100%; padding:13px 16px; font-size:15px; font-family:var(--font-sans);
+      border:1px solid var(--gray-mid); border-radius:3px;
+      background:var(--white); color:var(--black);
+      transition:border-color .2s, box-shadow .2s; outline:none;
+    }
+    input:focus, select:focus, textarea:focus { border-color:var(--green); box-shadow:0 0 0 3px rgba(58,170,53,0.12); }
+    textarea { resize:vertical; min-height:120px; }
+    select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; }
+    .form-note { font-size:12px; color:var(--gray-text); margin-top:6px; }
+    .checkbox-group { display:flex; align-items:flex-start; gap:12px; margin-top:4px; }
+    .checkbox-group input[type=checkbox] { width:18px; height:18px; flex-shrink:0; accent-color:var(--green); margin-top:2px; }
+    .checkbox-group label { font-size:14px; text-transform:none; letter-spacing:0; font-weight:400; color:var(--gray-text); }
+    .form-submit {
+      margin-top:8px; display:inline-flex; align-items:center; gap:10px;
+      background:var(--green); color:white;
+      padding:15px 36px; font-size:15px; font-weight:700; border:none;
+      border-radius:3px; cursor:pointer; font-family:var(--font-sans);
+      transition:background .2s;
+    }
+    .form-submit:hover { background:var(--green-dark); }
+    .form-success { display:none; background:var(--green-light); border:1px solid var(--green); border-radius:3px; padding:20px 24px; margin-top:24px; color:var(--green-dark); font-weight:600; font-size:15px; }
+
+    /* ── MORE RESOURCES ── */
+    .resources-section { background:var(--white); padding:80px; }
+    .resources-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
+    .resource-card { border:1px solid var(--gray-mid); overflow:hidden; transition:box-shadow .25s, border-color .25s; }
+    .resource-card:hover { box-shadow:0 6px 24px rgba(58,170,53,0.1); border-color:var(--green); }
+    .resource-img { aspect-ratio:16/9; overflow:hidden; }
+    .resource-img img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+    .resource-card:hover .resource-img img { transform:scale(1.04); }
+    .resource-body { padding:24px; }
+    .resource-tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--sky); margin-bottom:10px; }
+    .resource-body h4 { font-family:var(--font-serif); font-size:20px; font-weight:300; margin-bottom:10px; }
+    .resource-body p { font-size:14px; color:var(--gray-text); line-height:1.7; margin-bottom:16px; }
+    .resource-link { font-size:13px; font-weight:700; color:var(--green); display:inline-flex; align-items:center; gap:6px; border-bottom:1px solid var(--green); padding-bottom:1px; }
+
+    /* ── FOOTER ── */
+    footer { background:#111; color:rgba(255,255,255,.55); padding:60px 80px 32px; }
+    .footer-top { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:40px; gap:40px; flex-wrap:wrap; }
+    .footer-logo img { height:56px; width:auto; }
+    .footer-tagline { font-size:14px; color:rgba(255,255,255,.4); max-width:300px; line-height:1.7; margin-top:14px; }
+    .footer-social { display:flex; gap:10px; margin-top:20px; }
+    .social-icon { width:38px; height:38px; border:1px solid rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.45); border-radius:3px; transition:all .2s; }
+    .social-icon:hover { background:var(--green); border-color:var(--green); color:white; }
+    .footer-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:48px; margin-bottom:40px; }
+    .footer-col h5 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,.9); margin-bottom:20px; }
+    .footer-col h5::after { content:''; display:block; width:24px; height:2px; background:var(--green); margin-top:8px; }
+    .footer-col ul { list-style:none; }
+    .footer-col li { margin-bottom:12px; }
+    .footer-col a { font-size:14px; color:rgba(255,255,255,.45); transition:color .2s; }
+    .footer-col a:hover { color:var(--green); }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; border-top:1px solid rgba(255,255,255,.08); padding-top:28px; }
+    .footer-bottom p { font-size:13px; }
+    .footer-legal { display:flex; gap:24px; flex-wrap:wrap; }
+    .footer-legal a { font-size:13px; color:rgba(255,255,255,.35); transition:color .2s; }
+    .footer-legal a:hover { color:white; }
+
+    /* ── SCROLL ANIM ── */
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity .65s ease, transform .65s ease; }
+    .fade-up.visible { opacity:1; transform:none; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px){
+      .intro-section { grid-template-columns:1fr; gap:40px; }
+      .components-grid { grid-template-columns:1fr 1fr; }
+      .types-grid { grid-template-columns:1fr; }
+      .fitting-grid { grid-template-columns:1fr 1fr; }
+      .clinic-section { grid-template-columns:1fr; }
+      .section, .intro-section, .components-section, .types-intro, .products-section, .fitting-section, .testimonials-section, .clinic-section, .form-section, .resources-section { padding:60px 40px; }
+      footer { padding:60px 40px 32px; }
+      .breadcrumb { padding:14px 40px; }
+      .hero-content { padding:0 40px 60px; }
+    }
+    @media(max-width:768px){
+      header { padding:0 20px; }
+      nav.main-nav { display:none; }
+      .hamburger { display:flex; }
+      .hero-content { padding:0 20px 48px; }
+      .product-item { grid-template-columns:1fr; }
+      .product-item-img { height:220px; }
+      .components-grid { grid-template-columns:1fr; }
+      .fitting-grid { grid-template-columns:1fr; }
+      .testimonials-grid { grid-template-columns:1fr; }
+      .resources-grid { grid-template-columns:1fr; }
+      .form-grid { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .section, .intro-section, .components-section, .types-intro, .products-section, .fitting-section, .testimonials-section, .clinic-section, .form-section, .resources-section { padding:48px 20px; }
+      footer { padding:48px 20px 24px; }
+      .breadcrumb { padding:12px 20px; }
+      .footer-bottom { flex-direction:column; align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <a href="index.html" class="logo-wrap">
+    <img src="images/logo.png" alt="Med-Awa International" />
+  </a>
+  <nav class="main-nav">
+    <a href="index.html">Your Situation</a>
+    <a href="prosthetic-legs.html" class="active">Prosthetics</a>
+    <a href="index.html">Orthotics</a>
+    <a href="index.html">Wheelchairs</a>
+    <a href="index.html">Care Centers</a>
+    <a href="index.html">Exchange &amp; Support</a>
+  </nav>
+  <div class="header-actions">
+    <a href="#consult" class="btn-contact">Book Consultation</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ── BREADCRUMB ── -->
+<div class="breadcrumb">
+  <ol>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html">Prosthetics</a></li>
+    <li>Prosthetic Legs</li>
+  </ol>
+</div>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-img"><img src="images/4848463.jpg" alt="Prosthetic leg user walking confidently" /></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">What to know</div>
+    <h1><strong>Prosthetic Legs</strong></h1>
+    <p>Learn about the different kinds of prosthetic legs and how they help people regain their mobility, rebuild their confidence, and explore their world again.</p>
+    <a href="#overview" class="hero-scroll">
+      Learn more
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="2" x2="8" y2="14"/><polyline points="13,9 8,14 3,9"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ── INTRO ── -->
+<div id="overview" class="intro-section fade-up">
+  <div class="intro-text">
+    <div class="section-subtitle">About prosthetic legs</div>
+    <h2 class="section-title">What they are and how they work</h2>
+    <p>A prosthetic leg is a device used to support users who are missing all or part of their limb due to an injury, accident, illness, or congenital condition.</p>
+    <p>Prosthetic legs can empower people with limb differences in many different ways. They can help users regain their mobility and independence, pursue their favourite hobbies and pastimes, get back to their jobs, and improve their overall quality of life.</p>
+    <p>These devices come in a variety of designs and formats that meet different user needs and support different activities and goals. With the right prosthetic leg, users can live fulfilling lives and pursue their most important goals.</p>
+  </div>
+  <div class="intro-visual">
+    <img src="images/leg.jpg" alt="Prosthetic leg user in motion" />
+    <div class="intro-visual-badge">Restoring freedom of movement</div>
+  </div>
+</div>
+
+<!-- ── COMPONENTS ── -->
+<section id="components" class="components-section fade-up">
+  <div class="components-intro">
+    <div class="section-subtitle">Components</div>
+    <h2 class="section-title">Key parts of a prosthetic leg</h2>
+    <p class="section-lead">Prosthetic legs can come in many configurations depending on the user's lifestyle, interests, and residual limb. Typically a prosthetic leg has up to three main components.</p>
+  </div>
+  <div class="components-grid">
+    <div class="comp-card">
+      <div class="comp-img"><img src="images/4897800.jpg" alt="Socket and liner" /></div>
+      <div class="comp-body">
+        <div class="comp-tag">Component 01</div>
+        <h3>Socket &amp; Liner</h3>
+        <p>The socket together with the liner and corresponding suspension mode are the most individual part of every prosthetic leg. The liner is worn directly onto the limb to protect it, and ensures a safe, secure connection to the socket, which bears the body weight and connects to prosthetic components.</p>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-img"><img src="images/knee.jpg" alt="Prosthetic knee joint" /></div>
+      <div class="comp-body">
+        <div class="comp-tag">Component 02</div>
+        <h3>Prosthetic Knee</h3>
+        <p>For users with an above-knee limb difference, this component provides much of the prosthetic leg's mobility and stability. It replaces the natural knee joint and is designed to enable a wide range of motion — including walking, climbing stairs, and navigating ramps. Some prosthetic knees can even be taken into water.</p>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-img"><img src="images/foot.jpg" alt="Prosthetic foot" /></div>
+      <div class="comp-body">
+        <div class="comp-tag">Component 03</div>
+        <h3>Prosthetic Foot</h3>
+        <p>This component is primarily designed to provide a stable, supportive walking experience. Prosthetic feet come in a range of different designs and configurations with varying levels of stiffness, flexibility, and responsiveness. A professional prosthetist will help find the foot that offers the right performance for your lifestyle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TYPES INTRO ── -->
+<div class="types-intro fade-up">
+  <div class="section-subtitle">Types of prosthetic legs</div>
+  <h2 class="section-title" style="color:white;">Two main kinds of prosthetic legs</h2>
+  <p class="section-lead">There are two main types of prosthetic legs: mechanical prostheses and microprocessor-controlled devices. Both prosthetic feet and knees are available in both forms, providing a range of options to suit different users and their needs.</p>
+  <div class="types-grid">
+    <div class="type-card type-card-1">
+      <div class="type-icon">⚙️</div>
+      <h3>Mechanical Prostheses</h3>
+      <p>These devices use hydraulic and other mechanisms to provide the support and stability users need to stand, walk, and perform daily activities. They are typically strong, durable devices that can withstand significant wear and tear — a reliable and valuable option for many users.</p>
+    </div>
+    <div class="type-card type-card-2">
+      <div class="type-icon">🔬</div>
+      <h3>Microprocessor-Controlled</h3>
+      <p>Highly advanced devices that use computerized systems, sensors, and hydraulics to mimic natural walking gait. They offer a more sophisticated level of control and customization, adapting to different terrains and activities — offering greater stability, balance, and a more natural feel.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRODUCT LIST ── -->
+<section id="products" class="products-section fade-up">
+  <div class="products-header">
+    <div class="section-subtitle">Med-Awa Product Catalog</div>
+    <h2 class="section-title">Our prosthetic leg solutions</h2>
+    <p class="section-lead">Every product is customisable and fitted by our certified prosthetists to match your lifestyle, activity level, and goals.</p>
+  </div>
+
+  <!-- Mechanical -->
+  <div class="product-category">
+    <div class="product-category-title cat-green">⚙️ &nbsp; Mechanical Solutions</div>
+
+    <!-- Taleo Foot -->
+    <div class="product-item">
+      <div class="product-item-img">
+        <img src="images/talea_mach_foot.jpg" alt="Taleo Prosthetic Foot" />
+        <div class="product-item-badge badge-green">Mechanical Foot</div>
+      </div>
+      <div class="product-item-body">
+        <div class="product-item-tag tag-green">Mechanical Foot</div>
+        <h3>Taleo</h3>
+        <p>The Taleo prosthetic foot is designed for active users who navigate varied indoor and outdoor environments and place a high value on effortless walking and the ability to go wherever life takes them. Its dynamic carbon spring provides excellent energy return and a natural rollover.</p>
+        <div class="product-specs">
+          <div class="spec-pill"><span>✓</span> High Energy Return</div>
+          <div class="spec-pill"><span>✓</span> Indoor &amp; Outdoor</div>
+          <div class="spec-pill"><span>✓</span> Active Lifestyle</div>
+          <div class="spec-pill"><span>✓</span> Durable Build</div>
+        </div>
+        <a href="#consult" class="product-link link-green">Request Details →</a>
+      </div>
+    </div>
+
+    <!-- Maverick Comfort AT -->
+    <div class="product-item">
+      <div class="product-item-img">
+        <img src="images/maverick.jpg" alt="Maverick Comfort AT" />
+        <div class="product-item-badge badge-green">Mechanical Foot</div>
+      </div>
+      <div class="product-item-body">
+        <div class="product-item-tag tag-green">Mechanical Foot</div>
+        <h3>Maverick Comfort AT</h3>
+        <p>Created for those with limited build height, the water-resistant Maverick Comfort AT prosthetic foot combines a gentle rollover for comfortable walking with a high energy return. Ideal for users who want a reliable everyday foot with added water resistance.</p>
+        <div class="product-specs">
+          <div class="spec-pill"><span>✓</span> Water Resistant</div>
+          <div class="spec-pill"><span>✓</span> Limited Build Height</div>
+          <div class="spec-pill"><span>✓</span> Comfortable Rollover</div>
+          <div class="spec-pill"><span>✓</span> Energy Return</div>
+        </div>
+        <a href="#consult" class="product-link link-green">Request Details →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Microprocessor -->
+  <div class="product-category">
+    <div class="product-category-title cat-sky">🔬 &nbsp; Microprocessor-Controlled Solutions</div>
+
+    <!-- C-Leg 4 -->
+    <div class="product-item">
+      <div class="product-item-img">
+        <img src="images/4933650.jpg" alt="C-Leg 4 Microprocessor Knee" />
+        <div class="product-item-badge badge-sky">Microprocessor Knee</div>
+      </div>
+      <div class="product-item-body">
+        <div class="product-item-tag tag-sky">Microprocessor Knee</div>
+        <h3>C-Leg 4</h3>
+        <p>The C-Leg 4 is the world's most trusted microprocessor knee. It offers exceptional, proven reliability and the performance users need to enjoy a healthy, active lifestyle. Hundreds of thousands of steps are analysed every second to ensure safe, confident movement across all terrains.</p>
+        <div class="product-specs">
+          <div class="spec-pill"><span>✓</span> World's Most Trusted</div>
+          <div class="spec-pill"><span>✓</span> Adaptive Terrain Control</div>
+          <div class="spec-pill"><span>✓</span> Real-Time Sensing</div>
+          <div class="spec-pill"><span>✓</span> App Connectivity</div>
+        </div>
+        <a href="#consult" class="product-link link-sky">Request Details →</a>
+      </div>
+    </div>
+
+    <!-- Genium X4 -->
+    <div class="product-item">
+      <div class="product-item-img">
+        <img src="images/5046243-Genium-X4-169.jpg" alt="Genium X4 Microprocessor Knee" />
+        <div class="product-item-badge badge-sky">Microprocessor Knee</div>
+      </div>
+      <div class="product-item-body">
+        <div class="product-item-tag tag-sky">Microprocessor Knee</div>
+        <h3>Genium X4</h3>
+        <p>The next-generation microprocessor knee that sets a new benchmark for performance, durability, and customization. With the Genium X4, every movement flows smoothly — no matter whether big, small, forward, backward, or beyond — from everyday tasks to life's biggest adventures.</p>
+        <div class="product-specs">
+          <div class="spec-pill"><span>✓</span> Next-Generation AI</div>
+          <div class="spec-pill"><span>✓</span> Multi-Directional</div>
+          <div class="spec-pill"><span>✓</span> IP68 Waterproof</div>
+          <div class="spec-pill"><span>✓</span> Sports Ready</div>
+        </div>
+        <a href="#consult" class="product-link link-sky">Request Details →</a>
+      </div>
+    </div>
+
+    <!-- Meridium -->
+    <div class="product-item">
+      <div class="product-item-img">
+        <img src="images/1b1_product2-NGW169_4c.jpg" alt="Meridium Microprocessor Foot" />
+        <div class="product-item-badge badge-sky">Microprocessor Foot</div>
+      </div>
+      <div class="product-item-body">
+        <div class="product-item-tag tag-sky">Microprocessor Foot</div>
+        <h3>Meridium</h3>
+        <p>Designed for moderately active people who value intuitive adaptation and a feeling of natural movement. The Meridium microprocessor-controlled foot provides a smooth hydraulic rollover and makes walking feel effortless — whether on flat ground, ramps, or uneven surfaces.</p>
+        <div class="product-specs">
+          <div class="spec-pill"><span>✓</span> Hydraulic Rollover</div>
+          <div class="spec-pill"><span>✓</span> Intuitive Adaptation</div>
+          <div class="spec-pill"><span>✓</span> Natural Movement</div>
+          <div class="spec-pill"><span>✓</span> Slope Adjustment</div>
+        </div>
+        <a href="#consult" class="product-link link-sky">Request Details →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FITTING PROCESS ── -->
+<section id="fitting" class="fitting-section fade-up">
+  <div class="fitting-header">
+    <div class="section-subtitle">How it works</div>
+    <h2 class="section-title">The fitting process</h2>
+    <p class="section-lead">Getting a prosthetic leg is a collaborative journey. No two users need the same solution — every prosthetic leg is customised for the person who will be using it. Here is what to expect.</p>
+  </div>
+  <div class="fitting-grid">
+    <div class="fitting-step">
+      <div class="fitting-step-num">1</div>
+      <h4>Initial Consultation</h4>
+      <p>Meet with our certified prosthetist to discuss your limb difference, lifestyle goals, and activity level. We listen and assess your needs thoroughly.</p>
+    </div>
+    <div class="fitting-step">
+      <div class="fitting-step-num">2</div>
+      <h4>Component Selection</h4>
+      <p>Together with your care team — including your doctor and physical therapist — we identify the right set of prosthetic leg components for your life.</p>
+    </div>
+    <div class="fitting-step">
+      <div class="fitting-step-num">3</div>
+      <h4>Custom Socket Build</h4>
+      <p>Our prosthetist custom-builds a socket that fits your residual limb perfectly, keeping you comfortable, safe, and active throughout the day.</p>
+    </div>
+    <div class="fitting-step">
+      <div class="fitting-step-num">4</div>
+      <h4>Training &amp; Follow-Up</h4>
+      <p>We guide you through the training process and provide ongoing follow-up care to ensure your prosthetic leg continues to serve you well.</p>
+    </div>
+  </div>
+  <div class="fitting-visual">
+    <img src="images/quality.jpg" alt="Prosthetist fitting a patient" />
+    <img src="images/3332654-_MMP0093--169-col_3345964__en.jpg" alt="Prosthetic fitting session" />
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section fade-up">
+  <div class="testimonials-header">
+    <div class="section-subtitle">Patient Stories</div>
+    <h2 class="section-title">Lives transformed</h2>
+    <p class="section-lead">Hear from real people whose lives have been changed by Med-Awa prosthetic solutions.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <img src="images/4629077--169-col_4630853.jpg" alt="Tendai M." class="testimonial-img" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;" />
+      <p>"After my accident I never thought I'd walk again. With my C-Leg 4 from Med-Awa I can walk my children to school every morning. That means everything to me."</p>
+      <div class="testimonial-name">Tendai M.</div>
+      <div class="testimonial-detail">C-Leg 4 User · Harare</div>
+    </div>
+    <div class="testimonial-card">
+      <img src="images/5069629.jpg" alt="Grace N." class="testimonial-img" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;" />
+      <p>"The Med-Awa team treated me with so much care during fitting. My Taleo foot lets me hike again — something I was told would never be possible. I am beyond grateful."</p>
+      <div class="testimonial-name">Grace N.</div>
+      <div class="testimonial-detail">Taleo Foot User · Bulawayo</div>
+    </div>
+    <div class="testimonial-card">
+      <img src="images/4897800.jpg" alt="James K." class="testimonial-img" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;" />
+      <p>"The Genium X4 feels like a natural part of me. I have returned to playing football with my friends and I can manage stairs without a second thought. Med-Awa gave me my life back."</p>
+      <div class="testimonial-name">James K.</div>
+      <div class="testimonial-detail">Genium X4 User · Mutare</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FIND A CLINIC ── -->
+<div class="clinic-section fade-up">
+  <div class="clinic-text">
+    <div class="section-subtitle" style="color:rgba(255,255,255,.7);">Finding the right fit</div>
+    <h2>Getting a prosthetic leg or foot</h2>
+    <p>When it comes to prosthetic legs, no two users need the same solution. Every prosthetic leg is customized for the person who will be using it — by a certified prosthetist who works with you and your care team to build a socket that keeps you comfortable, safe, and active.</p>
+    <a href="#consult" class="clinic-btn">
+      Book a Free Consultation
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+    </a>
+  </div>
+  <div class="clinic-visual">
+    <img src="images/4933650.jpg" alt="Orthopaedic technician adjusting a prosthesis" />
+    <div class="clinic-visual-overlay"></div>
+  </div>
+</div>
+
+<!-- ── CONSULTATION FORM ── -->
+<section id="consult" class="form-section fade-up">
+  <div class="form-wrap">
+    <div class="section-subtitle">Book a consultation</div>
+    <h2 class="section-title">Talk to a specialist</h2>
+    <p class="section-lead">Fill in the form below and one of our certified prosthetists will contact you within 24 hours to discuss the best solution for your needs.</p>
+    <form id="consultForm" novalidate>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fname">First Name *</label>
+          <input type="text" id="fname" placeholder="e.g. Tendai" required />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name *</label>
+          <input type="text" id="lname" placeholder="e.g. Moyo" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" placeholder="+263 77 000 0000" required />
+        </div>
+        <div class="form-group">
+          <label for="city">City / Location</label>
+          <input type="text" id="city" placeholder="e.g. Harare" />
+        </div>
+        <div class="form-group">
+          <label for="product">Product of Interest</label>
+          <select id="product">
+            <option value="">— Select a product —</option>
+            <option>Taleo Prosthetic Foot</option>
+            <option>Maverick Comfort AT</option>
+            <option>C-Leg 4 Microprocessor Knee</option>
+            <option>Genium X4 Microprocessor Knee</option>
+            <option>Meridium Microprocessor Foot</option>
+            <option>Not sure — need advice</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="amputation">Amputation Level</label>
+          <select id="amputation">
+            <option value="">— Select level —</option>
+            <option>Below-knee (transtibial)</option>
+            <option>Above-knee (transfemoral)</option>
+            <option>Knee disarticulation</option>
+            <option>Partial foot</option>
+            <option>Other / Not sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="activity">Activity Level</label>
+          <select id="activity">
+            <option value="">— Select level —</option>
+            <option>Limited (mostly indoors)</option>
+            <option>Moderate (community ambulation)</option>
+            <option>Active (work, recreation)</option>
+            <option>High (sports, demanding terrain)</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="message">Tell us more about your situation</label>
+          <textarea id="message" placeholder="Share any relevant details about your condition, lifestyle, or goals. The more we know, the better we can help."></textarea>
+        </div>
+        <div class="form-group full">
+          <div class="checkbox-group">
+            <input type="checkbox" id="consent" required />
+            <label for="consent">I agree to Med-Awa International contacting me regarding my enquiry. I understand my information will be handled in accordance with the Privacy Policy. *</label>
+          </div>
+        </div>
+        <div class="form-group full">
+          <button type="submit" class="form-submit">
+            Submit Request
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+          </button>
+          <p class="form-note">* Required fields. We typically respond within one business day.</p>
+        </div>
+      </div>
+      <div class="form-success" id="formSuccess">
+        ✓ Thank you! Your consultation request has been received. A Med-Awa specialist will be in touch within 24 hours.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ── RESOURCES ── -->
+<section class="resources-section fade-up">
+  <div class="section-subtitle">Education &amp; Resources</div>
+  <h2 class="section-title">More information on prosthetic legs</h2>
+  <p class="section-lead">Ready to keep exploring? Discover the inspiration, community, and products you need for life with a prosthetic device.</p>
+  <div class="resources-grid">
+    <div class="resource-card">
+      <div class="resource-img"><img src="images/5069629.jpg" alt="Microprocessor knees" /></div>
+      <div class="resource-body">
+        <div class="resource-tag">Deep Dive</div>
+        <h4>Explore microprocessor-controlled knees</h4>
+        <p>Read about the innovation behind cutting-edge microprocessor knees and the devices that have set the global standard for this technology.</p>
+        <a href="#" class="resource-link">More info →</a>
+      </div>
+    </div>
+    <div class="resource-card">
+      <div class="resource-img"><img src="images/foot.jpg" alt="Prosthetic foot" /></div>
+      <div class="resource-body">
+        <div class="resource-tag">Deep Dive</div>
+        <h4>Understand the value of a prosthetic foot</h4>
+        <p>Get a complete overview of a prosthetic foot — finding a foot that suits you, mobility grades, our prosthetic foot portfolio, and FAQs.</p>
+        <a href="#" class="resource-link">Learn more →</a>
+      </div>
+    </div>
+    <div class="resource-card">
+      <div class="resource-img"><img src="images/movao_image_16_9_logo.jpg" alt="Community" /></div>
+      <div class="resource-body">
+        <div class="resource-tag">Connect with Others</div>
+        <h4>Find community and support</h4>
+        <p>Join a network where amputees and their loved ones can connect locally and globally with like-minded people about similar interests and challenges.</p>
+        <a href="#" class="resource-link">Sign up →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="images/logo.png" alt="Med-Awa International" /></div>
+      <p class="footer-tagline">Providing world-class prosthetic, orthotic and mobility solutions to help people live life on their own terms.</p>
+      <div class="footer-social">
+        <a href="#" class="social-icon" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" class="social-icon" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </div>
+    <div style="display:flex;gap:60px;flex-wrap:wrap;">
+      <div>
+        <div class="footer-col">
+          <h5>For Patients</h5>
+          <ul>
+            <li><a href="#">Life with Amputation</a></li>
+            <li><a href="prosthetic-legs.html">Prosthetic Legs</a></li>
+            <li><a href="#">Orthotics</a></li>
+            <li><a href="#">Wheelchairs</a></li>
+            <li><a href="#">Care Centers</a></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">About Med-Awa</a></li>
+            <li><a href="#consult">Contact Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Med-Awa Academy</a></li>
+            <li><a href="#">Press Room</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Med-Awa International. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Imprint</a>
+      <a href="#">Cookie Settings</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Form submit
+  document.getElementById('consultForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const consent = document.getElementById('consent').checked;
+    if (!fname || !email || !consent) {
+      alert('Please fill in all required fields and accept the consent checkbox.');
+      return;
+    }
+    document.getElementById('formSuccess').style.display = 'block';
+    this.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+    document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+</body>
+</html>

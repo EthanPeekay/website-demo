@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prosthetics | Med-Awa International</title>
+  <meta name="description" content="Med-Awa International leads the way in upper and lower body prosthetic limbs. Discover our full range of prosthetic solutions for every lifestyle and need." />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:      #3aaa35;
+      --green-dark: #2a8025;
+      --green-light:#e8f7e8;
+      --sky:        #29b8e0;
+      --sky-dark:   #1a90b0;
+      --sky-light:  #e0f6fc;
+      --black:      #1c1c1c;
+      --gray-text:  #555;
+      --gray-mid:   #ddd;
+      --gray-light: #f4f4f4;
+      --white:      #ffffff;
+      --font-sans:  'Source Sans 3', sans-serif;
+      --font-serif: 'Source Serif 4', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--black); background: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white); border-bottom: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 72px;
+      box-shadow: 0 2px 12px rgba(58,170,53,0.10);
+    }
+    .logo-wrap img { height: 56px; width: auto; }
+    nav.main-nav { display: flex; align-items: center; gap: 28px; }
+    nav.main-nav a { font-size: 14px; font-weight: 600; color: var(--black); padding: 8px 0; border-bottom: 2.5px solid transparent; transition: border-color .2s, color .2s; }
+    nav.main-nav a:hover, nav.main-nav a.active { border-color: var(--green); color: var(--green); }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-contact { background: var(--green); color: white; padding: 9px 20px; font-size: 14px; font-weight: 700; border-radius: 3px; transition: background .2s; }
+    .btn-contact:hover { background: var(--green-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { margin-top: 72px; background: var(--gray-light); padding: 14px 80px; border-bottom: 1px solid var(--gray-mid); }
+    .breadcrumb ol { list-style: none; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .breadcrumb li { font-size: 13px; color: var(--gray-text); }
+    .breadcrumb li a { color: var(--green); font-weight: 600; }
+    .breadcrumb li a:hover { text-decoration: underline; }
+    .breadcrumb li::after { content: '›'; margin-left: 8px; color: var(--gray-mid); }
+    .breadcrumb li:last-child::after { display: none; }
+    .breadcrumb li:last-child { color: var(--black); font-weight: 600; }
+
+    /* ── HERO ── */
+    .hero { position: relative; height: 72vh; min-height: 480px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-img { position: absolute; inset: 0; }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,25,8,0.85) 0%, rgba(8,25,8,0.48) 55%, rgba(8,25,8,0.1) 100%); }
+    .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--green),var(--sky)); z-index:3; }
+    .hero-content { position: relative; z-index: 2; padding: 0 80px 80px; max-width: 660px; }
+    .hero-label { display:inline-block; background:var(--green); color:white; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; border-radius:2px; margin-bottom:18px; }
+    .hero-content h1 { font-family:var(--font-serif); font-size: clamp(38px,5.5vw,68px); font-weight:300; color:white; line-height:1.08; margin-bottom:18px; }
+    .hero-content h1 strong { font-weight:700; color:#7ee87a; }
+    .hero-content p { font-size:18px; color:rgba(255,255,255,.83); line-height:1.72; max-width:540px; margin-bottom:32px; }
+    .hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+    .btn-primary { display:inline-flex; align-items:center; gap:10px; background:var(--green); color:white; padding:14px 28px; font-size:15px; font-weight:700; border-radius:3px; transition:background .2s; }
+    .btn-primary:hover { background:var(--green-dark); }
+    .btn-outline { display:inline-flex; align-items:center; gap:10px; border:2px solid rgba(255,255,255,.6); color:white; padding:13px 26px; font-size:15px; font-weight:700; border-radius:3px; transition:all .2s; }
+    .btn-outline:hover { background:rgba(255,255,255,.12); border-color:white; }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip { background:var(--green); color:white; padding:28px 80px; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+    .intro-strip p { font-size:17px; line-height:1.7; max-width:700px; opacity:.95; }
+    .intro-strip a { display:inline-flex; align-items:center; gap:8px; border:2px solid rgba(255,255,255,.7); color:white; padding:11px 22px; font-size:14px; font-weight:700; border-radius:3px; white-space:nowrap; transition:all .2s; }
+    .intro-strip a:hover { background:rgba(255,255,255,.18); border-color:white; }
+
+    /* ── SECTION COMMONS ── */
+    .pad { padding: 80px; }
+    .section-subtitle { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--green); margin-bottom:12px; }
+    .section-title { font-family:var(--font-serif); font-size:38px; font-weight:300; line-height:1.18; margin-bottom:18px; }
+    .section-lead { font-size:17px; color:var(--gray-text); line-height:1.8; max-width:780px; }
+
+    /* ── CATEGORY NAVIGATION ── */
+    .cat-nav { background:var(--white); padding:0 80px; border-bottom:2px solid var(--gray-mid); position:sticky; top:72px; z-index:100; }
+    .cat-nav-inner { display:flex; gap:0; overflow-x:auto; }
+    .cat-nav-inner::-webkit-scrollbar { height:3px; }
+    .cat-nav-inner::-webkit-scrollbar-thumb { background:var(--green); }
+    .cat-nav-item {
+      padding:18px 28px; font-size:14px; font-weight:700; color:var(--gray-text);
+      white-space:nowrap; cursor:pointer; border-bottom:3px solid transparent;
+      transition:color .2s, border-color .2s; user-select:none;
+    }
+    .cat-nav-item:hover { color:var(--green); }
+    .cat-nav-item.active { color:var(--green); border-bottom-color:var(--green); }
+
+    /* ── FEATURED GRID (hub cards) ── */
+    .hub-section { background:var(--gray-light); padding:80px; }
+    .hub-header { margin-bottom:52px; }
+    .hub-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+    .hub-card {
+      position:relative; overflow:hidden; cursor:pointer;
+      display:flex; flex-direction:column;
+    }
+    .hub-card-img { aspect-ratio:16/9; overflow:hidden; position:relative; }
+    .hub-card-img img { width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+    .hub-card:hover .hub-card-img img { transform:scale(1.05); }
+    .hub-card-body { background:var(--white); padding:32px 36px 36px; flex:1; display:flex; flex-direction:column; }
+    .hub-card-tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
+    .tag-g { color:var(--green); }
+    .tag-s { color:var(--sky); }
+    .hub-card-body h3 { font-family:var(--font-serif); font-size:26px; font-weight:300; margin-bottom:12px; }
+    .hub-card-body p { font-size:15px; color:var(--gray-text); line-height:1.78; margin-bottom:24px; flex:1; }
+    .hub-card-link {
+      display:inline-flex; align-items:center; gap:8px; align-self:flex-start;
+      font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px;
+      padding:11px 22px; border-radius:3px; border:2px solid; transition:background .2s, color .2s;
+    }
+    .link-g { border-color:var(--green); color:var(--green); }
+    .link-g:hover { background:var(--green); color:white; }
+    .link-s { border-color:var(--sky); color:var(--sky); }
+    .link-s:hover { background:var(--sky); color:white; }
+    /* Accent bar */
+    .hub-card-img::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; }
+    .hub-card.green-card .hub-card-img::after { background:var(--green); }
+    .hub-card.sky-card .hub-card-img::after { background:var(--sky); }
+
+    /* ── WIDE CARD (featured product) ── */
+    .wide-card {
+      display:grid; grid-template-columns:1fr 1fr; gap:0;
+      border:1px solid var(--gray-mid); margin-bottom:3px;
+      background:var(--white); transition:box-shadow .25s, border-color .25s;
+      overflow:hidden;
+    }
+    .wide-card:hover { box-shadow:0 8px 32px rgba(58,170,53,0.11); border-color:var(--green); }
+    .wide-card-img { overflow:hidden; position:relative; min-height:320px; }
+    .wide-card-img img { width:100%; height:100%; object-fit:cover; transition:transform .45s; }
+    .wide-card:hover .wide-card-img img { transform:scale(1.04); }
+    .wide-card-badge { position:absolute; top:16px; left:16px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; padding:5px 12px; border-radius:2px; color:white; }
+    .bg-g { background:var(--green); }
+    .bg-s { background:var(--sky); }
+    .wide-card-body { padding:44px 48px; display:flex; flex-direction:column; justify-content:center; }
+    .wide-card-body .tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
+    .wide-card-body h3 { font-family:var(--font-serif); font-size:30px; font-weight:300; margin-bottom:16px; }
+    .wide-card-body p { font-size:16px; color:var(--gray-text); line-height:1.82; margin-bottom:24px; }
+    .wide-card-specs { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:28px; }
+    .spec { background:var(--gray-light); border-radius:20px; padding:6px 14px; font-size:12px; font-weight:600; }
+    .spec-g { border-left:3px solid var(--green); }
+    .spec-s { border-left:3px solid var(--sky); }
+
+    /* ── SOLUTION TYPES SECTION ── */
+    .solutions-section { background:var(--black); color:white; padding:80px; }
+    .solutions-section .section-subtitle { color:var(--green); }
+    .solutions-section .section-title { color:white; }
+    .solutions-section .section-lead { color:rgba(255,255,255,.68); }
+    .solutions-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; margin-top:48px; }
+    .sol-card {
+      padding:40px 36px; position:relative; overflow:hidden;
+      transition:transform .25s;
+    }
+    .sol-card:hover { transform:translateY(-4px); }
+    .sol-card-1 { background:linear-gradient(160deg,#0d2b0d,#1a4a1a); border-top:3px solid var(--green); }
+    .sol-card-2 { background:linear-gradient(160deg,#071c2a,#0e3a55); border-top:3px solid var(--sky); }
+    .sol-card-3 { background:linear-gradient(160deg,#1a2b0d,#264d1a); border-top:3px solid var(--green); }
+    .sol-icon { font-size:44px; margin-bottom:20px; }
+    .sol-card h3 { font-family:var(--font-serif); font-size:24px; font-weight:300; color:white; margin-bottom:12px; }
+    .sol-card p { font-size:14px; color:rgba(255,255,255,.65); line-height:1.8; margin-bottom:24px; }
+    .sol-link { font-size:13px; font-weight:700; color:white; display:inline-flex; align-items:center; gap:6px; border-bottom:1px solid rgba(255,255,255,.4); padding-bottom:2px; transition:border-color .2s; }
+    .sol-link:hover { border-color:var(--green); color:#7ee87a; }
+
+    /* ── UPPER LIMB ── */
+    .upper-section { background:var(--white); padding:80px; }
+    .upper-header { margin-bottom:52px; }
+    .upper-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+    .upper-card { background:var(--gray-light); overflow:hidden; transition:box-shadow .25s; }
+    .upper-card:hover { box-shadow:0 6px 24px rgba(41,184,224,0.13); }
+    .upper-card-img { aspect-ratio:1/1; overflow:hidden; }
+    .upper-card-img img { width:100%; height:100%; object-fit:cover; transition:transform .45s; }
+    .upper-card:hover .upper-card-img img { transform:scale(1.05); }
+    .upper-card-body { padding:26px 28px 30px; }
+    .upper-card-body .tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--sky); margin-bottom:10px; }
+    .upper-card-body h3 { font-family:var(--font-serif); font-size:22px; font-weight:300; margin-bottom:10px; }
+    .upper-card-body p { font-size:14px; color:var(--gray-text); line-height:1.72; margin-bottom:18px; }
+    .upper-link { font-size:13px; font-weight:700; color:var(--sky); display:inline-flex; align-items:center; gap:6px; border-bottom:1px solid var(--sky); padding-bottom:1px; }
+
+    /* ── STATS BAND ── */
+    .stats-band { background:linear-gradient(135deg,var(--green-dark),var(--green)); color:white; padding:60px 80px; }
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px; }
+    .stat-item { text-align:center; }
+    .stat-num { font-family:var(--font-serif); font-size:52px; font-weight:300; line-height:1; margin-bottom:8px; }
+    .stat-unit { font-size:24px; font-weight:700; color:rgba(255,255,255,.7); }
+    .stat-label { font-size:14px; opacity:.8; margin-top:6px; line-height:1.5; }
+
+    /* ── SPORTS & ACTIVITY ── */
+    .sports-section { background:var(--gray-light); padding:80px; }
+    .sports-split { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .sports-visual { position:relative; border-radius:4px; overflow:hidden; }
+    .sports-visual img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+    .sports-visual::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.35) 0%,transparent 50%); }
+    .sports-badge { position:absolute; bottom:24px; left:24px; z-index:1; background:var(--green); color:white; padding:10px 20px; border-radius:3px; font-size:13px; font-weight:700; }
+    .sports-text .section-subtitle { color:var(--sky); }
+    .sports-text p { font-size:16px; color:var(--gray-text); line-height:1.85; margin-bottom:16px; }
+    .sports-tags { display:flex; gap:10px; flex-wrap:wrap; margin:24px 0 28px; }
+    .sport-tag { background:var(--white); border:1px solid var(--gray-mid); border-radius:20px; padding:7px 16px; font-size:13px; font-weight:600; color:var(--black); display:flex; align-items:center; gap:6px; }
+
+    /* ── LIFECYCLE ── */
+    .lifecycle-section { background:var(--white); padding:80px; }
+    .lifecycle-header { max-width:680px; margin-bottom:56px; }
+    .lifecycle-steps { display:grid; grid-template-columns:repeat(5,1fr); gap:0; position:relative; }
+    .lifecycle-steps::before { content:''; position:absolute; top:28px; left:10%; right:10%; height:2px; background:linear-gradient(90deg,var(--green),var(--sky)); z-index:0; }
+    .life-step { text-align:center; padding:0 16px; position:relative; z-index:1; }
+    .life-num {
+      width:56px; height:56px; border-radius:50%; margin:0 auto 16px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:20px; font-weight:700; color:white;
+    }
+    .ln-1,.ln-3,.ln-5 { background:var(--green); }
+    .ln-2,.ln-4 { background:var(--sky); }
+    .life-step h4 { font-size:15px; font-weight:700; margin-bottom:8px; }
+    .life-step p { font-size:13px; color:var(--gray-text); line-height:1.65; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background:var(--sky-light); padding:80px; }
+    .testimonials-header { margin-bottom:48px; }
+    .testi-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .testi-card { background:var(--white); padding:36px; position:relative; overflow:hidden; transition:box-shadow .25s; }
+    .testi-card:hover { box-shadow:0 6px 24px rgba(41,184,224,0.12); }
+    .testi-card::before { content:'\201C'; position:absolute; top:16px; right:24px; font-size:80px; color:var(--sky); opacity:.12; font-family:Georgia,serif; line-height:1; }
+    .testi-accent { position:absolute; top:0; left:0; width:4px; bottom:0; }
+    .ta-g { background:var(--green); }
+    .ta-s { background:var(--sky); }
+    .testi-img-row { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+    .testi-avatar { width:56px; height:56px; border-radius:50%; object-fit:cover; border:3px solid var(--green-light); flex-shrink:0; }
+    .testi-name { font-weight:700; font-size:15px; }
+    .testi-detail { font-size:13px; color:var(--green); font-weight:600; }
+    .testi-card blockquote { font-size:15px; color:var(--gray-text); line-height:1.82; font-style:italic; }
+
+    /* ── CONTACT CTA ── */
+    .cta-section { background:var(--black); padding:80px; display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+    .cta-box { padding:48px 48px; display:flex; flex-direction:column; }
+    .cta-box-1 { background:linear-gradient(135deg,#0d2b0d,#1a4a1a); }
+    .cta-box-2 { background:linear-gradient(135deg,#071c2a,#0e3a55); }
+    .cta-box h3 { font-family:var(--font-serif); font-size:30px; font-weight:300; color:white; margin-bottom:14px; }
+    .cta-box p { font-size:15px; color:rgba(255,255,255,.7); line-height:1.8; margin-bottom:28px; flex:1; }
+    .cta-link { display:inline-flex; align-items:center; gap:8px; align-self:flex-start; font-size:14px; font-weight:700; border-radius:3px; padding:12px 24px; transition:all .2s; }
+    .cta-link-g { background:var(--green); color:white; }
+    .cta-link-g:hover { background:var(--green-dark); }
+    .cta-link-s { background:var(--sky); color:white; }
+    .cta-link-s:hover { background:var(--sky-dark); }
+
+    /* ── FOOTER ── */
+    footer { background:#111; color:rgba(255,255,255,.55); padding:60px 80px 32px; }
+    .footer-top { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:40px; gap:40px; flex-wrap:wrap; }
+    .footer-logo img { height:56px; width:auto; }
+    .footer-tagline { font-size:14px; color:rgba(255,255,255,.4); max-width:300px; line-height:1.7; margin-top:14px; }
+    .footer-social { display:flex; gap:10px; margin-top:20px; }
+    .social-icon { width:38px; height:38px; border:1px solid rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.45); border-radius:3px; transition:all .2s; }
+    .social-icon:hover { background:var(--green); border-color:var(--green); color:white; }
+    .footer-cols { display:flex; gap:60px; flex-wrap:wrap; }
+    .footer-col h5 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,.9); margin-bottom:20px; }
+    .footer-col h5::after { content:''; display:block; width:24px; height:2px; background:var(--green); margin-top:8px; }
+    .footer-col ul { list-style:none; }
+    .footer-col li { margin-bottom:12px; }
+    .footer-col a { font-size:14px; color:rgba(255,255,255,.45); transition:color .2s; }
+    .footer-col a:hover { color:var(--green); }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; border-top:1px solid rgba(255,255,255,.08); padding-top:28px; }
+    .footer-bottom p { font-size:13px; }
+    .footer-legal { display:flex; gap:24px; flex-wrap:wrap; }
+    .footer-legal a { font-size:13px; color:rgba(255,255,255,.35); transition:color .2s; }
+    .footer-legal a:hover { color:white; }
+
+    /* ── SCROLL ANIM ── */
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity .65s ease, transform .65s ease; }
+    .fade-up.visible { opacity:1; transform:none; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){
+      .hub-grid { grid-template-columns:1fr; }
+      .solutions-grid { grid-template-columns:1fr 1fr; }
+      .stats-grid { grid-template-columns:1fr 1fr; gap:32px; }
+      .lifecycle-steps { grid-template-columns:1fr 1fr; gap:32px; }
+      .lifecycle-steps::before { display:none; }
+      .testi-grid { grid-template-columns:1fr; }
+      .cta-section { grid-template-columns:1fr; }
+    }
+    @media(max-width:1024px){
+      .pad, .hub-section, .solutions-section, .upper-section, .stats-band, .sports-section, .lifecycle-section, .testimonials-section, .cta-section { padding:60px 40px; }
+      .cat-nav { padding:0 40px; }
+      .breadcrumb { padding:14px 40px; }
+      .hero-content { padding:0 40px 64px; }
+      .intro-strip { padding:24px 40px; }
+      footer { padding:60px 40px 32px; }
+      .wide-card { grid-template-columns:1fr; }
+      .wide-card-img { min-height:220px; max-height:280px; }
+      .upper-grid { grid-template-columns:1fr 1fr; }
+      .sports-split { grid-template-columns:1fr; gap:40px; }
+    }
+    @media(max-width:768px){
+      header { padding:0 20px; }
+      nav.main-nav { display:none; }
+      .hamburger { display:flex; }
+      .hero-content { padding:0 20px 48px; }
+      .pad, .hub-section, .solutions-section, .upper-section, .stats-band, .sports-section, .lifecycle-section, .testimonials-section, .cta-section { padding:48px 20px; }
+      .cat-nav { padding:0 20px; }
+      .breadcrumb { padding:12px 20px; }
+      .intro-strip { padding:24px 20px; flex-direction:column; }
+      .solutions-grid { grid-template-columns:1fr; }
+      .upper-grid { grid-template-columns:1fr; }
+      .stats-grid { grid-template-columns:1fr 1fr; gap:24px; }
+      .lifecycle-steps { grid-template-columns:1fr; }
+      footer { padding:48px 20px 24px; }
+      .footer-bottom { flex-direction:column; align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <a href="index.html" class="logo-wrap">
+    <img src="images/logo.png" alt="Med-Awa International" />
+  </a>
+  <nav class="main-nav">
+    <a href="index.html">Your Situation</a>
+    <a href="prosthetics.html" class="active">Prosthetics</a>
+    <a href="index.html">Orthotics</a>
+    <a href="index.html">Wheelchairs</a>
+    <a href="index.html">Care Centers</a>
+    <a href="index.html">Exchange &amp; Support</a>
+  </nav>
+  <div class="header-actions">
+    <a href="#cta" class="btn-contact">Find a Clinic</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ── BREADCRUMB ── -->
+<div class="breadcrumb">
+  <ol>
+    <li><a href="index.html">Home</a></li>
+    <li>Prosthetics</li>
+  </ol>
+</div>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-img"><img src="images/4848463.jpg" alt="Man walking confidently with a prosthetic leg" /></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">Med-Awa Solutions</div>
+    <h1><strong>Prosthetics</strong></h1>
+    <p>Med-Awa International has led the way in upper and lower body prosthetic limbs for over two decades. Discover the full range of solutions for every lifestyle, activity level, and need.</p>
+    <div class="hero-btns">
+      <a href="#lower-limb" class="btn-primary">
+        Explore lower limb
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+      </a>
+      <a href="#upper-limb" class="btn-outline">
+        Explore upper limb
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── INTRO STRIP ── -->
+<div class="intro-strip">
+  <p>With a focus on clinical outcomes and quality, Med-Awa's portfolio offers unmatched performance and breadth — all backed by a global network of certified prosthetists and care clinics.</p>
+  <a href="#cta">Book a free consultation →</a>
+</div>
+
+<!-- ── CATEGORY NAV ── -->
+<nav class="cat-nav">
+  <div class="cat-nav-inner">
+    <div class="cat-nav-item active" data-target="lower-limb">Lower Limb Prosthetics</div>
+    <div class="cat-nav-item" data-target="upper-limb">Upper Limb Prosthetics</div>
+    <div class="cat-nav-item" data-target="sports">Sports &amp; Activity</div>
+    <div class="cat-nav-item" data-target="lifecycle">The Fitting Process</div>
+    <div class="cat-nav-item" data-target="stories">Patient Stories</div>
+  </div>
+</nav>
+
+<!-- ── LOWER LIMB HUB ── -->
+<section id="lower-limb" class="hub-section fade-up">
+  <div class="hub-header">
+    <div class="section-subtitle">Lower limb prosthetics</div>
+    <h2 class="section-title">Prosthetic legs, knees &amp; feet</h2>
+    <p class="section-lead">From below-knee prostheses to sophisticated microprocessor knees, our lower limb portfolio empowers users to walk, run, swim, and live without limits.</p>
+  </div>
+  <div class="hub-grid">
+    <!-- Prosthetic Legs card -->
+    <div class="hub-card green-card">
+      <div class="hub-card-img">
+        <img src="images/leg.jpg" alt="Prosthetic legs" />
+      </div>
+      <div class="hub-card-body">
+        <div class="hub-card-tag tag-g">Lower Limb</div>
+        <h3>Prosthetic Legs</h3>
+        <p>Learn about the different kinds of prosthetic legs — from below-knee to above-knee solutions — and how they help people regain mobility, rebuild confidence, and explore their world. Includes both mechanical and microprocessor-controlled options for every activity level.</p>
+        <a href="prosthetic-legs.html" class="hub-card-link link-g">
+          Explore prosthetic legs
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Microprocessor Knees card -->
+    <div class="hub-card sky-card">
+      <div class="hub-card-img">
+        <img src="images/5046243-Genium-X4-169.jpg" alt="Microprocessor knees" />
+      </div>
+      <div class="hub-card-body">
+        <div class="hub-card-tag tag-s">Lower Limb — Advanced</div>
+        <h3>Microprocessor-Controlled Knees</h3>
+        <p>Our microprocessor knees — including the world-renowned C-Leg 4 and Genium X4 — use real-time sensors and intelligent algorithms to adapt to any terrain, offering users the highest levels of safety, stability, and natural movement in every situation.</p>
+        <a href="prosthetic-legs.html#products" class="hub-card-link link-s">
+          Explore microprocessor knees
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured product wide card -->
+  <div style="margin-top:3px;">
+    <div class="wide-card">
+      <div class="wide-card-img">
+        <img src="images/4933650.jpg" alt="C-Leg 4" />
+        <div class="wide-card-badge bg-s">Featured Product</div>
+      </div>
+      <div class="wide-card-body">
+        <div class="tag tag-s">Microprocessor Knee · Featured</div>
+        <h3>C-Leg 4 — The World's Most Trusted Microprocessor Knee</h3>
+        <p>The C-Leg 4 offers proven, exceptional reliability and the performance users need to enjoy a healthy, active lifestyle. Hundreds of thousands of steps are analysed every second, providing real-time adaptation that keeps users safe and confident across all terrains.</p>
+        <div class="wide-card-specs">
+          <div class="spec spec-s">Real-time terrain sensing</div>
+          <div class="spec spec-s">App connectivity</div>
+          <div class="spec spec-s">IP67 splash-proof</div>
+          <div class="spec spec-s">Stumble recovery</div>
+        </div>
+        <a href="prosthetic-legs.html#consult" class="hub-card-link link-s" style="font-size:13px;padding:11px 22px;">
+          Request details →
+        </a>
+      </div>
+    </div>
+
+    <div class="wide-card">
+      <div class="wide-card-img">
+        <img src="images/talea_mach_foot.jpg" alt="Taleo Foot" />
+        <div class="wide-card-badge bg-g">Mechanical Solution</div>
+      </div>
+      <div class="wide-card-body">
+        <div class="tag tag-g">Mechanical Foot · Everyday Use</div>
+        <h3>Taleo — High Energy Return for Active Users</h3>
+        <p>The Taleo prosthetic foot is designed for active users who navigate varied environments and place a high value on effortless walking. Its dynamic carbon spring delivers excellent energy return and a natural rollover for everyday adventures indoors and out.</p>
+        <div class="wide-card-specs">
+          <div class="spec spec-g">Dynamic carbon spring</div>
+          <div class="spec spec-g">High energy return</div>
+          <div class="spec spec-g">Indoor &amp; outdoor</div>
+          <div class="spec spec-g">Durable build</div>
+        </div>
+        <a href="prosthetic-legs.html#consult" class="hub-card-link link-g" style="font-size:13px;padding:11px 22px;">
+          Request details →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUTION TYPES ── -->
+<div class="solutions-section fade-up">
+  <div class="section-subtitle">Types of prosthetic solutions</div>
+  <h2 class="section-title" style="color:white;">Finding the right technology for you</h2>
+  <p class="section-lead">There are many types of prostheses, from simple mechanical devices to complex high-tech ones that mimic the movement of a natural limb. Here is a quick overview.</p>
+  <div class="solutions-grid">
+    <div class="sol-card sol-card-1">
+      <div class="sol-icon">⚙️</div>
+      <h3>Mechanical Prostheses</h3>
+      <p>Use hydraulic and other mechanisms to provide reliable support for standing, walking, and daily activities. Strong and durable devices built to withstand significant wear and tear.</p>
+      <a href="prosthetic-legs.html" class="sol-link">Learn more →</a>
+    </div>
+    <div class="sol-card sol-card-2">
+      <div class="sol-icon">🔬</div>
+      <h3>Microprocessor-Controlled</h3>
+      <p>Advanced devices using computerised systems, sensors, and hydraulics to mimic natural gait. They adapt in real-time to different terrains and activities for greater stability and a natural feel.</p>
+      <a href="prosthetic-legs.html#products" class="sol-link">Learn more →</a>
+    </div>
+    <div class="sol-card sol-card-3">
+      <div class="sol-icon">🏃</div>
+      <h3>Sports &amp; Activity Prostheses</h3>
+      <p>Specialised prostheses for running, swimming, contact sports, and high-performance activities. Engineered for athletes and active individuals who demand peak performance from their prosthesis.</p>
+      <a href="#sports" class="sol-link">Learn more →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── UPPER LIMB ── -->
+<section id="upper-limb" class="upper-section fade-up">
+  <div class="upper-header">
+    <div class="section-subtitle">Upper limb prosthetics</div>
+    <h2 class="section-title">Prosthetic arms, hands &amp; fingers</h2>
+    <p class="section-lead">Med-Awa's upper limb solutions span multiple technologies and applications — from cosmetic covers and passive prostheses to advanced myoelectric and body-powered devices — helping users regain function and independence.</p>
+  </div>
+  <div class="upper-grid">
+    <div class="upper-card">
+      <div class="upper-card-img">
+        <img src="images/hand.jpg" alt="Myoelectric hand prosthesis" />
+      </div>
+      <div class="upper-card-body">
+        <div class="tag">Myoelectric</div>
+        <h3>Myoelectric Hands &amp; Arms</h3>
+        <p>Sensor-driven prosthetic hands and arms that respond to muscle signals, giving users precise, intuitive control over gripping, holding, and manipulating objects in daily life.</p>
+        <a href="#cta" class="upper-link">Enquire →</a>
+      </div>
+    </div>
+    <div class="upper-card">
+      <div class="upper-card-img">
+        <img src="images/4897800.jpg" alt="Body-powered prosthesis" />
+      </div>
+      <div class="upper-card-body">
+        <div class="tag">Body-Powered</div>
+        <h3>Body-Powered Prostheses</h3>
+        <p>Harnessing the user's own body movement for control, these durable and highly functional devices are ideal for active lifestyles and demanding work environments.</p>
+        <a href="#cta" class="upper-link">Enquire →</a>
+      </div>
+    </div>
+    <div class="upper-card">
+      <div class="upper-card-img">
+        <img src="images/movao_image_16_9_logo.jpg" alt="Cosmetic prosthesis" />
+      </div>
+      <div class="upper-card-body">
+        <div class="tag">Cosmetic &amp; Passive</div>
+        <h3>Cosmetic &amp; Passive Prostheses</h3>
+        <p>Designed to restore a natural appearance, cosmetic prostheses offer a lightweight, aesthetic solution. Passive devices also provide functional support for specific daily tasks.</p>
+        <a href="#cta" class="upper-link">Enquire →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS BAND ── -->
+<div class="stats-band fade-up">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">20<span class="stat-unit">+</span></div>
+      <div class="stat-label">Years of prosthetic excellence</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">340<span class="stat-unit">+</span></div>
+      <div class="stat-label">Care clinics across the region</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">50<span class="stat-unit">k+</span></div>
+      <div class="stat-label">Patients fitted to date</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">98<span class="stat-unit">%</span></div>
+      <div class="stat-label">Patient satisfaction rating</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SPORTS & ACTIVITY ── -->
+<section id="sports" class="sports-section fade-up">
+  <div class="sports-split">
+    <div class="sports-visual">
+      <img src="images/5069629.jpg" alt="Active prosthetic user running" />
+      <div class="sports-badge">Active Living &amp; Sports</div>
+    </div>
+    <div class="sports-text">
+      <div class="section-subtitle">Sports &amp; activity prosthetics</div>
+      <h2 class="section-title">Built for performance</h2>
+      <p>For users who demand more from their prosthesis — whether that means getting back onto the athletics track, into the swimming pool, or simply hiking with family — Med-Awa offers a range of dedicated sports and activity prosthetic solutions.</p>
+      <p>Our sports prostheses are engineered alongside athletes and clinicians to deliver the specific performance characteristics that active users need: energy return, stability, waterproofing, and durability.</p>
+      <div class="sports-tags">
+        <div class="sport-tag">🏃 Running</div>
+        <div class="sport-tag">🏊 Swimming</div>
+        <div class="sport-tag">⛰️ Hiking</div>
+        <div class="sport-tag">🚴 Cycling</div>
+        <div class="sport-tag">⚽ Ball Sports</div>
+        <div class="sport-tag">🏋️ Gym &amp; Fitness</div>
+      </div>
+      <a href="#cta" class="hub-card-link link-g" style="font-size:13px;padding:12px 24px;">
+        Talk to a sports specialist →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── LIFECYCLE ── -->
+<section id="lifecycle" class="lifecycle-section fade-up">
+  <div class="lifecycle-header">
+    <div class="section-subtitle">The fitting process</div>
+    <h2 class="section-title">Your journey to a new prosthesis</h2>
+    <p class="section-lead">Every prosthesis is custom-built for the individual. Our certified prosthetists guide you through every step of the journey — from first assessment to long-term care.</p>
+  </div>
+  <div class="lifecycle-steps">
+    <div class="life-step">
+      <div class="life-num ln-1">1</div>
+      <h4>Initial Assessment</h4>
+      <p>Meet your prosthetist. We evaluate your limb difference, lifestyle goals, activity level, and medical history.</p>
+    </div>
+    <div class="life-step">
+      <div class="life-num ln-2">2</div>
+      <h4>Component Selection</h4>
+      <p>Together with your care team we identify the ideal components — feet, knees, sockets — for your life.</p>
+    </div>
+    <div class="life-step">
+      <div class="life-num ln-3">3</div>
+      <h4>Custom Socket Build</h4>
+      <p>We custom-build and fit a socket that connects perfectly to your residual limb for comfort and safety.</p>
+    </div>
+    <div class="life-step">
+      <div class="life-num ln-4">4</div>
+      <h4>Gait Training</h4>
+      <p>Work with our physiotherapy partners to learn how to use your new prosthesis with confidence and skill.</p>
+    </div>
+    <div class="life-step">
+      <div class="life-num ln-5">5</div>
+      <h4>Ongoing Support</h4>
+      <p>Regular check-ins, adjustments, and maintenance keep your prosthesis performing at its best for years.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="stories" class="testimonials-section fade-up">
+  <div class="testimonials-header">
+    <div class="section-subtitle" style="color:var(--sky);">Patient Stories</div>
+    <h2 class="section-title">Lives transformed by Med-Awa</h2>
+    <p class="section-lead">Hear directly from people whose world changed when they found the right prosthetic solution.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-accent ta-g"></div>
+      <div class="testi-img-row">
+        <img src="images/4629077--169-col_4630853.jpg" class="testi-avatar" alt="Tendai M." />
+        <div>
+          <div class="testi-name">Tendai M.</div>
+          <div class="testi-detail">C-Leg 4 User · Harare</div>
+        </div>
+      </div>
+      <blockquote>"After my accident I never thought I'd walk again. With my C-Leg 4 from Med-Awa I walk my children to school every morning. The care I received from the team here changed my life completely."</blockquote>
+    </div>
+    <div class="testi-card">
+      <div class="testi-accent ta-s"></div>
+      <div class="testi-img-row">
+        <img src="images/3332654-_MMP0093--169-col_3345964__en.jpg" class="testi-avatar" alt="Grace N." />
+        <div>
+          <div class="testi-name">Grace N.</div>
+          <div class="testi-detail">Taleo Foot User · Bulawayo</div>
+        </div>
+      </div>
+      <blockquote>"The Med-Awa team treated me with such care during my fitting. My Taleo foot lets me hike again — something I was told would never be possible. I am genuinely beyond grateful."</blockquote>
+    </div>
+    <div class="testi-card">
+      <div class="testi-accent ta-g"></div>
+      <div class="testi-img-row">
+        <img src="images/5069629.jpg" class="testi-avatar" alt="James K." />
+        <div>
+          <div class="testi-name">James K.</div>
+          <div class="testi-detail">Genium X4 User · Mutare</div>
+        </div>
+      </div>
+      <blockquote>"The Genium X4 feels like a natural part of me. I am back playing football with my friends and manage stairs without a second thought. Med-Awa gave me my life back."</blockquote>
+    </div>
+    <div class="testi-card">
+      <div class="testi-accent ta-s"></div>
+      <div class="testi-img-row">
+        <img src="images/4897800.jpg" class="testi-avatar" alt="Fatima S." />
+        <div>
+          <div class="testi-name">Fatima S.</div>
+          <div class="testi-detail">Myoelectric Hand User · Harare</div>
+        </div>
+      </div>
+      <blockquote>"I was sceptical a prosthetic hand could restore what I lost. My myoelectric prosthesis from Med-Awa proved me wrong — I am typing, cooking, and holding my baby again."</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<div id="cta" class="cta-section fade-up">
+  <div class="cta-box cta-box-1">
+    <h3>Find a Med-Awa Care Centre Near You</h3>
+    <p>Our network of certified prosthetists and care clinics spans the region. Find the nearest centre and book a free initial consultation — no referral needed.</p>
+    <a href="prosthetic-legs.html#consult" class="cta-link cta-link-g">
+      Book a consultation
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+    </a>
+  </div>
+  <div class="cta-box cta-box-2">
+    <h3>Speak to a Prosthetics Specialist</h3>
+    <p>Have a question about our products, the fitting process, or insurance and funding options? Our specialist team is here to help — reach out and we will respond within 24 hours.</p>
+    <a href="prosthetic-legs.html#consult" class="cta-link cta-link-s">
+      Contact a specialist
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="images/logo.png" alt="Med-Awa International" /></div>
+      <p class="footer-tagline">Providing world-class prosthetic, orthotic and mobility solutions to help people live life on their own terms.</p>
+      <div class="footer-social">
+        <a href="#" class="social-icon" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" class="social-icon" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>Prosthetics</h5>
+        <ul>
+          <li><a href="prosthetics.html">Overview</a></li>
+          <li><a href="prosthetic-legs.html">Prosthetic Legs</a></li>
+          <li><a href="#">Microprocessor Knees</a></li>
+          <li><a href="#">Prosthetic Feet</a></li>
+          <li><a href="#">Upper Limb</a></li>
+          <li><a href="#">Sports Prostheses</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">About Med-Awa</a></li>
+          <li><a href="#">Care Centers</a></li>
+          <li><a href="#">Med-Awa Academy</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="prosthetic-legs.html#consult">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Med-Awa International. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Imprint</a>
+      <a href="#">Cookie Settings</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Category nav highlight on scroll
+  const sections = ['lower-limb','upper-limb','sports','lifecycle','stories'];
+  const navItems = document.querySelectorAll('.cat-nav-item');
+  const scrollObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const id = e.target.id;
+        navItems.forEach(n => {
+          n.classList.toggle('active', n.dataset.target === id);
+        });
+      }
+    });
+  }, { rootMargin:'-30% 0px -60% 0px' });
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) scrollObs.observe(el);
+  });
+
+  // Click nav to scroll
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = document.getElementById(item.dataset.target);
+      if(target) target.scrollIntoView({ behavior:'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
